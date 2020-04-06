@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import Search from './Search';
 import Weather from './Weather';
 import Forecast from './Forecast';
 import './App.css';
 
-function App() {
+export default function WeatherApp() {
+  const [city, setCity] = useState('London');
+
+  function handleSearch(city) {
+    setCity(city);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Search />
-        <Weather />
-        <Forecast />
-      </header>
+      <img src={logo} className="App-logo" alt="logo" />
+      <Search onSubmit={handleSearch} />
+      <Weather city={city} />
+      <Forecast />
+      {city}
     </div>
-  );
+  )
 }
 
-export default App;
+
