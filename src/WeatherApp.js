@@ -10,6 +10,10 @@ export default function WeatherApp() {
   const [city, setCity] = useState({ name: 'London' });
   const [weatherData, setWeatherData] = useState({});
 
+  function handleFavourite(event) {
+    event.preventDefault();
+    setCity({ name: event.target.id });
+  }
   function handleSearch(city) {
     setCity({ name: city });
   }
@@ -45,18 +49,18 @@ export default function WeatherApp() {
   }, [city]);
 
   function handleError(error) {
-    alert('hello, enter city,');
+    alert('hello, enter city');
   }
 
   return (
     <div className="container">
       <img src={logo} className="App-logo" alt="logo" />
       <div className="App">
-        <ul>
-          <li><a href='/'>London</a></li>
-          <li><a href='#'>Paris</a></li>
-          <li><a href='#'>Sydney</a></li>
-          <li><a href='#'>San Francisco</a></li>
+        <ul onClick={handleFavourite}>
+          <li id='Lisbon'>Lisbon</li>
+          <li id='Paris'>Paris</li>
+          <li id='Sydney'>Sydney</li>
+          <li id='San$Francisco'>San Francisco</li>
         </ul>
         <div className='row'>
           <Search onSubmit={handleSearch} /></div>
