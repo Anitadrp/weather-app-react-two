@@ -13,11 +13,16 @@ export default function Search(props) {
     setSearch(event.target.value);
   }
 
+  function currentLocation() {
+    setSearch('Experiment')
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <input onChange={handleSearch} value={search} type='text' placeholder='type a city'></input>
         <input type='submit' value='Search'></input>
+        <input onClick={currentLocation} type='submit' value='Location'></input>
       </form>
     </div>
   )

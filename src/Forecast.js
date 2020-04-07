@@ -4,7 +4,7 @@ export default function Forecast() {
   return (
     <div>
       <div>
-        15˚C
+        {"some forecast"}
       </div>
     </div>
   )
