@@ -59,9 +59,11 @@ export default function WeatherApp() {
 
   return (
     <div className="container">
-      <img src={logo} className="App-logo" alt="logo" />
+
       <div className="App">
+
         <ul>
+          <img src={logo} className="App-logo" alt="logo" />
           {
             favourites.map(favourite => (
               <li
