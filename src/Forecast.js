@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function Forecast() {
+export default function Forecast(props) {
   return (
     <div>
       <div>
-        <p>15˚C</p>
-        <p>15:00</p>
-        <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="overcast clouds"></img>
+        <p>{props.temperature}</p>
+        <p>{props.time}</p>
+        <img src={props.icon} alt={props.description} />
       </div>
     </div>
   )

@@ -9,6 +9,7 @@ import './App.css';
 export default function WeatherApp() {
   const [city, setCity] = useState({ name: 'London' });
   const [weatherData, setWeatherData] = useState({});
+  const [forecastData, setForecastData] = useState({});
   const [favourites, setFavourites] = useState([
     { name: 'London' },
     { name: 'Paris' },
@@ -38,19 +39,38 @@ export default function WeatherApp() {
         response.data.weather[0].icon
         }@2x.png`
     })
+  }
 
+  function handleForecast(response) {
+    setForecastData({
+      temperature: response.data.list[0].main.temp,
+      time: response.data.list[0].dt_txt,
+      icon: `http://openweathermap.org/img/wn/${
+        response.data.list[0].weather[0].icon
+        }@2x.png`,
+      description: response.data.list[0].weather[0].description
+    }
+
+    );
   }
 
   useEffect(() => {
     const apiKey = "3fceae23dde22994db28dbf0244f6a96";
     const weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&units=metric&appid=${apiKey}`;
+    const forecastApi = `https://api.openweathermap.org/data/2.5/forecast?q=${city.name}&units=metric&appid=${apiKey}`;
 
     axios
       .get(weatherApi)
       .then(handleWeather)
       .catch(handleError);
 
+    axios
+      .get(forecastApi)
+      .then(handleForecast)
+      .catch(handleError);
+
     console.log(weatherApi)
+    console.log(forecastApi)
   }, [city]);
 
   function handleError(error) {
@@ -86,9 +106,16 @@ export default function WeatherApp() {
             humidity={weatherData.humidity}
             wind={weatherData.wind}
             icon={weatherData.icon}
-          /></div>
+          />
+        </div>
         <div className='row'>
-          <Forecast />
+          <Forecast
+            temperature={forecastData.temperature}
+            time={forecastData.time}
+            icon={forecastData.icon}
+            description={forecastData.description}
+          />
+
         </div>
       </div>
       <p>

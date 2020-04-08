@@ -11,7 +11,7 @@ export default function Weather(props) {
       </div>
       <div className='row'>
         <div className='col-6'>
-          <img src={props.icon} />
+          <img src={props.icon} alt={props.description} />
           {props.temperature}
         </div>
         <div className='col-6'>
