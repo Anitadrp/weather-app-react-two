@@ -9,10 +9,15 @@ import './App.css';
 export default function WeatherApp() {
   const [city, setCity] = useState({ name: 'London' });
   const [weatherData, setWeatherData] = useState({});
+  const [favourites, setFavourites] = useState([
+    { name: 'London' },
+    { name: 'Paris' },
+    { name: 'Lisbon' },
+    { name: 'San Francisco' },
+  ]);
 
-  function handleFavourite(event) {
-    event.preventDefault();
-    setCity({ name: event.target.id });
+  function handleFavourite(favourite) {
+    setCity(favourite);
   }
   function handleSearch(city) {
     setCity({ name: city });
@@ -56,11 +61,17 @@ export default function WeatherApp() {
     <div className="container">
       <img src={logo} className="App-logo" alt="logo" />
       <div className="App">
-        <ul onClick={handleFavourite}>
-          <li id='Lisbon'>Lisbon</li>
-          <li id='Paris'>Paris</li>
-          <li id='Sydney'>Sydney</li>
-          <li id='San$Francisco'>San Francisco</li>
+        <ul>
+          {
+            favourites.map(favourite => (
+              <li
+                key={favourite.name}
+                onClick={() => handleFavourite(favourite)}
+              >
+                {favourite.name}
+              </li>
+            ))
+          }
         </ul>
         <div className='row'>
           <Search onSubmit={handleSearch} /></div>
@@ -75,8 +86,14 @@ export default function WeatherApp() {
             icon={weatherData.icon}
           /></div>
         <div className='row'>
-          <Forecast /></div>
+          <Forecast />
+        </div>
       </div>
+      <p>
+        Open source code on
+        <a href="https://github.com/Anitadrp/weather-app-react-two"> GitHub </a>by
+        Anitadrp
+      </p>
     </div>
   )
 }
