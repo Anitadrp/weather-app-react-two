@@ -3,13 +3,14 @@ import logo from './logo.svg';
 import Search from './Search';
 import Weather from './Weather';
 import Forecast from './Forecast';
+import Info from './Info';
 import axios from 'axios';
 import './App.css';
 
 export default function WeatherApp() {
   const [city, setCity] = useState({ name: 'London' });
-  const [weatherData, setWeatherData] = useState({});
-  const [forecastData, setForecastData] = useState({});
+  const [weatherData, setWeatherData] = useState(null);
+  const [forecastData, setForecastData] = useState(null);
   const [favourites, setFavourites] = useState([
     { name: 'London' },
     { name: 'Paris' },
@@ -42,15 +43,15 @@ export default function WeatherApp() {
   }
 
   function handleForecast(response) {
-    setForecastData({
-      temperature: response.data.list[0].main.temp,
-      time: response.data.list[0].dt_txt,
-      icon: `http://openweathermap.org/img/wn/${
-        response.data.list[0].weather[0].icon
-        }@2x.png`,
-      description: response.data.list[0].weather[0].description
-    }
-
+    setForecastData(
+      response.data.list.slice(0, 6).map(item => ({
+        temperature: item.main.temp,
+        time: item.dt_txt,
+        icon: `http://openweathermap.org/img/wn/${
+          item.weather[0].icon
+          }@2x.png`,
+        description: item.weather[0].description
+      }))
     );
   }
 
@@ -98,25 +99,34 @@ export default function WeatherApp() {
         <div className='row'>
           <Search onSubmit={handleSearch} /></div>
         <div className='row'>
-          <Weather
-            city={weatherData.city}
-            time={weatherData.time}
-            temperature={weatherData.temperature}
-            description={weatherData.description}
-            humidity={weatherData.humidity}
-            wind={weatherData.wind}
-            icon={weatherData.icon}
-          />
+          {
+            weatherData && (
+              <Weather
+                city={weatherData.city}
+                time={weatherData.time}
+                temperature={weatherData.temperature}
+                description={weatherData.description}
+                humidity={weatherData.humidity}
+                wind={weatherData.wind}
+                icon={weatherData.icon}
+              />
+            )
+          }
         </div>
         <div className='row'>
-          <Forecast
-            temperature={forecastData.temperature}
-            time={forecastData.time}
-            icon={forecastData.icon}
-            description={forecastData.description}
-          />
-
+          {
+            forecastData && forecastData.map((item) => (
+              <Forecast
+                key={item.time}
+                temperature={item.temperature}
+                time={item.time}
+                icon={item.icon}
+                description={item.description}
+              />
+            ))
+          }
         </div>
+        <Info />
       </div>
       <p>
         Open source code on

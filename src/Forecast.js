@@ -5,7 +5,7 @@ export default function Forecast(props) {
     <div>
       <div>
         <p>{props.temperature}</p>
-        <p>{props.time}</p>
+        <p>{props.time.slice(11, 16)}</p>
         <img src={props.icon} alt={props.description} />
       </div>
     </div>
