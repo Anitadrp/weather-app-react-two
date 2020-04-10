@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <div>
+    <div className='app'>
       <WeatherApp />
     </div>
   </React.StrictMode>,

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Forecast(props) {
   return (
-    <div>
+    <div className='col-2'>
       <div>
         <p>{props.temperature}</p>
         <p>{props.time.slice(11, 16)}</p>

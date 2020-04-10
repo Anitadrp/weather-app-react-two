@@ -79,12 +79,9 @@ export default function WeatherApp() {
   }
 
   return (
-    <div className="container">
-
-      <div className="App">
-
+    <>
+      <div className='favourites'>
         <ul>
-          <img src={logo} className="App-logo" alt="logo" />
           {
             favourites.map(favourite => (
               <li
@@ -96,6 +93,8 @@ export default function WeatherApp() {
             ))
           }
         </ul>
+      </div>
+      <div className='container display'>
         <div className='row'>
           <Search onSubmit={handleSearch} /></div>
         <div className='row'>
@@ -126,14 +125,16 @@ export default function WeatherApp() {
             ))
           }
         </div>
-        <Info />
-      </div>
-      <p>
+        <div className='row'>
+          <Info />
+        </div>
+      </div >
+      <div className='footNote'>
         Open source code on
         <a href="https://github.com/Anitadrp/weather-app-react-two"> GitHub </a>by
         Anitadrp
-      </p>
-    </div>
+      </div>
+    </>
   )
 }
 
