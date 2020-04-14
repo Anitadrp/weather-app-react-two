@@ -4,12 +4,12 @@ export default function Weather(props) {
   let temperature = Math.round(props.temperature);
   let realFeel = Math.round(props.realFeel);
   let wind = props.wind;
+
   if (!props.isMetric) {
     temperature = Math.round((temperature * 9) / 5 + 32);
     wind = Math.round(wind * 2.237);
     realFeel = Math.round((realFeel * 9) / 5 + 32);
   }
-
 
   return (
     <>
@@ -20,7 +20,7 @@ export default function Weather(props) {
       </div>
       <div className='col temperature'>
         <img src={props.icon} alt={props.description} />
-        {temperature} {props.isMetric ? "˚C" : "˚F"}
+        <span className='mainTemperature'>{temperature}</span> {props.isMetric ? "˚C" : "˚F"}
         <span>
           <button
             className="temperatureButton"

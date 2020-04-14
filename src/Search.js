@@ -21,9 +21,9 @@ export default function Search(props) {
   return (
     <div className='search'>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleSearch} value={search} type='text' placeholder='type a city'></input>
-        <input type='submit' value='Search'></input>
-        <input onClick={currentLocation} type='submit' value='Location'></input>
+        <input className='formStyle' onChange={handleSearch} value={search} type='text' placeholder='type a city..'></input>
+        <input className='formStyle' type='submit' value='Search'></input>
+        <input className='formStyle' onClick={currentLocation} type='submit' value='Location'></input>
       </form>
     </div>
   )

@@ -96,7 +96,7 @@ export default function WeatherApp() {
     }
   }, [city]);
 
-  function handleError(error) {
+  function handleError() {
     alert('hello, enter city');
   }
 
@@ -140,7 +140,7 @@ export default function WeatherApp() {
           }
         </div>
         <button className='forecastButton'
-          onClick={onToggleForecast}>{forecastDaily ? 'Hourly' : 'Daily'}</button>
+          onClick={onToggleForecast}>{forecastDaily ? 'View Hourly' : 'View Daily'}</button>
         <div className='row forecast'>
           <Forecast
             data={forecastData}
@@ -156,5 +156,3 @@ export default function WeatherApp() {
     </>
   );
 }
-
-

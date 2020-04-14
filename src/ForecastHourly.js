@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function ForecastHourly(props) {
   let temperature = Math.round(props.temperature);
+
   if (!props.isMetric) {
     temperature = Math.round((temperature * 9) / 5 + 32);
   }
@@ -9,7 +10,7 @@ export default function ForecastHourly(props) {
   return (
     <div className='col-2'>
       <div>
-        <p>{props.time}</p>
+        <p>{props.time.slice(0, 5)}</p>
         <img src={props.icon} alt={props.description} />
         <p><span className='largeValue'>{temperature}</span> {props.isMetric ? "˚C" : "˚F"}</p>
       </div>

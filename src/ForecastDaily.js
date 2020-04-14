@@ -12,7 +12,7 @@ export default function ForecastDaily(props) {
   return (
     <div className='col-2'>
       <div>
-        <p>{props.date}</p>
+        <p>{props.date.slice(0, 5)}</p>
         <img src={props.icon} alt={props.description} />
         <p><span className='largeValue'>{maximum}</span> {props.isMetric ? "˚C" : "˚F"} </p>
         <p>{minimum} {props.isMetric ? "˚C" : "˚F"}</p>
