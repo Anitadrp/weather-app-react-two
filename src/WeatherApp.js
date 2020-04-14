@@ -150,7 +150,7 @@ export default function WeatherApp() {
       </div>
       <div className='footNote'>
         Open source code on
-        <a href="https://github.com/Anitadrp/weather-app-react-two"> GitHub </a>by
+        <a href="https://github.com/Anitadrp/weather-app-react-two" target='_blank'> GitHub </a>by
         Anitadrp
       </div>
     </>
