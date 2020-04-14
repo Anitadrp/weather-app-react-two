@@ -46,6 +46,7 @@ li {
 
 .temperatureButton {
   color: rgb(25, 102, 227);
+  background-color: transparent;
   border: none;
   font-size: 12px;
   font-weight: 700;
@@ -89,6 +90,7 @@ li {
   font-size: 18px;
   font-weight: 900px;
 }
+
 .forecastButton {
   border: none;
   color: rgb(25, 102, 227);
