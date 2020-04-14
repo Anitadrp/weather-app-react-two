@@ -1,12 +1,13 @@
 .app {
+  font-family: "Raleway", sans-serif;
   border: 1px solid black;
   box-shadow: 5px 5px grey;
   margin: 20px;
-  width: 700px;
+  width: 750px;
 }
 
 .app .display {
-  width: 650px;
+  width: 700px;
   border: 1px solid black;
   box-shadow: 5px 5px grey;
   padding: 20px;
@@ -17,17 +18,69 @@
   margin-left: 20px;
 }
 
-ul {
+li {
+  display: inline;
+  padding: 0 10px 0 0;
+  cursor: pointer;
+}
+
+.favourites ul {
   padding: 0;
   margin-bottom: 0;
 }
 
-li{
-  display: inline;
-  padding: 0 10px 0 0; 
+.search {
+  padding-left: 15px;
+}
+
+.display p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.weather {
+  padding-top: 10px;
+}
+
+.city {
+  text-align: left;
+}
+
+.city h1 {
+  margin: 0;
+}
+
+.temperature {
+  align-self: center;
+  text-align: center;
+}
+
+.data {
+  align-self: center;
+  text-align: right;
+}
+
+.largeValue {
+  font-size: 18px;
+  font-weight: 900px;
+}
+
+.forecast {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.forecast p {
+  line-height: 16px;
+}
+
+.forecast .col-2 {
+  padding: 0;
 }
 
 .footNote {
   margin-left:20px;
+  font-size: 12px;
+  line-height: 26px;
 }
 
